@@ -19,13 +19,13 @@ class SunspotsMatrix
 		total = 0
 
 		for x in xRange
-			total = total + rowAbove[x]
+			total += rowAbove[x]
 
 		for x in xRange
-			total = total + middleRow[x]
+			total += middleRow[x]
 
 		for x in xRange
-			total = total + rowBelow[x]
+			total += rowBelow[x]
 
 		total
 
