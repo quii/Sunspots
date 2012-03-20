@@ -17,15 +17,9 @@ class SunspotsMatrix
 		xRange = [x-1..x+1]
 
 		total = 0
-
-		for x in xRange
-			total += rowAbove[x]
-
-		for x in xRange
-			total += middleRow[x]
-
-		for x in xRange
-			total += rowBelow[x]
+		total+=rowAbove[x] for x in xRange
+		total+=middleRow[x] for x in xRange
+		total+=rowBelow[x] for x in xRange
 
 		total
 
