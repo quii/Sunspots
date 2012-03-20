@@ -11,15 +11,12 @@ class SunspotsMatrix
 			@matrix.push(@values.slice(sliceIndex, sliceIndex+@matrixSize))
 
 	getHotSpotScore: (x, y) ->
-		rowAbove = @matrix[y-1]
-		middleRow = @matrix[y]
-		rowBelow = @matrix[y+1]
-		xRange = [x-1..x+1]
-
 		total = 0
-		total+=rowAbove[x] for x in xRange
-		total+=middleRow[x] for x in xRange
-		total+=rowBelow[x] for x in xRange
+		ranges = [x-1..x+1]
+
+		for xx in ranges
+			for yy in ranges
+				total+=@matrix[xx][yy]
 
 		total
 
