@@ -16,7 +16,6 @@ class SunspotsMatrix
 
 		for xx in ranges
 			for yy in ranges
-				if(x>)
 				total+=@matrix[xx][yy]
 
 		total
