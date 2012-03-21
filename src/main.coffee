@@ -21,7 +21,7 @@ class SunspotsMatrix
 
 		total
 
-	inMatrixRange: (point) -> point>=0 and point<=@matrixSize
+	inMatrixRange: (point) -> point>=0 and point<@matrixSize
 
 	topScores: ->
 		totals = []
@@ -32,16 +32,14 @@ class SunspotsMatrix
 				totals.push([x, y, @getHotSpotScore(x,y)])
 
 		totals.sort(@sortFunc)
+		totals.slice(0, @numberOfResults)
 
 	sortFunc: (a,b) ->
-		b-a
+		b[2]-a[2]
 
 
-			
-# questionOne = new SunspotsMatrix("1 5 5 3 1 2 0 4 1 1 3 2 2 3 2 4 3 0 2 3 3 2 1 0 2 4 3")
-# console.log("Question one should be 26 - actual = ", questionOne.topScores())
+questionOne = new SunspotsMatrix("1 5 5 3 1 2 0 4 1 1 3 2 2 3 2 4 3 0 2 3 3 2 1 0 2 4 3")
+console.log("Question one should be 26 (3,3) - actual = ", questionOne.topScores())
 
 questionTwo = new SunspotsMatrix("3 4 2 3 2 1 4 4 2 0 3 4 1 1 2 3 4 4")
-console.log("Question two (i) should be 27 - actual = ", questionTwo.getHotSpotScore(1,2))
-console.log("Question two (ii) should be 25 - actual = ", questionTwo.getHotSpotScore(1,1))
-console.log("Question two (iii) should be 23 - actual = ", questionTwo.getHotSpotScore(2,2))
+console.log("Question two should be 27 (1,2), 25 (1,1), 23 (2,2) - actual = ", questionTwo.topScores())
