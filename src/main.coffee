@@ -13,13 +13,11 @@ class SunspotsMatrix
 	getHotSpotScore: (x, y) ->
 		total = 0
 
-		for yy in [x-1..x+1] when @inMatrixRange(yy)
-			for xx in [y-1..y+1] when @inMatrixRange(xx)
+		for yy in @area(x) when @inMatrixRange(yy)
+			for xx in @area(y) when @inMatrixRange(xx)
 				total+=@matrix[xx][yy]
 
 		total
-
-	inMatrixRange: (point) -> point>=0 and point<@matrixSize
 
 	topScores: ->
 		totals = []
@@ -30,6 +28,10 @@ class SunspotsMatrix
 				totals.push([x, y, @getHotSpotScore(x,y)])
 
 		@formatResult(t) for t in totals.sort(@sortFunc).slice(0, @numberOfResults)
+	
+	inMatrixRange: (point) -> point>=0 and point<@matrixSize
+
+	area: (point) -> [point-1, point, point+1]
 
 	sortFunc: (a,b) -> b[2]-a[2]
 
