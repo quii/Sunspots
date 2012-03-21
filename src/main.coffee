@@ -12,11 +12,9 @@ class SunspotsMatrix
 
 	getHotSpotScore: (x, y) ->
 		total = 0
-		xRanges = [x-1..x+1]
-		yRanges = [y-1..y+1]
 
-		for yy in xRanges when @inMatrixRange(yy)
-			for xx in yRanges when @inMatrixRange(xx)
+		for yy in [x-1..x+1] when @inMatrixRange(yy)
+			for xx in [y-1..y+1] when @inMatrixRange(xx)
 				total+=@matrix[xx][yy]
 
 		total
@@ -39,7 +37,7 @@ class SunspotsMatrix
 
 
 questionOne = new SunspotsMatrix("1 5 5 3 1 2 0 4 1 1 3 2 2 3 2 4 3 0 2 3 3 2 1 0 2 4 3")
-console.log("Question one should be 26 (3,3) - actual = ", questionOne.topScores())
+console.log("Question one should be (3,3) 26 - actual = ", questionOne.topScores())
 
 questionTwo = new SunspotsMatrix("3 4 2 3 2 1 4 4 2 0 3 4 1 1 2 3 4 4")
-console.log("Question two should be 27 (1,2), 25 (1,1), 23 (2,2) - actual = ", questionTwo.topScores())
+console.log("Question two should be (1,2) 27 , (1,1) 25 , (2,2) 23  - actual = ", questionTwo.topScores())
