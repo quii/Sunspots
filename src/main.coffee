@@ -31,10 +31,11 @@ class SunspotsMatrix
 			for x in fullRange
 				totals.push([x, y, @getHotSpotScore(x,y)])
 
-		"(#{t[0]}, #{t[1]} score:#{t[2]})" for t in totals.sort(@sortFunc).slice(0, @numberOfResults)
+		@formatResult(t) for t in totals.sort(@sortFunc).slice(0, @numberOfResults)
 
-	sortFunc: (a,b) ->
-		b[2]-a[2]
+	sortFunc: (a,b) -> b[2]-a[2]
+
+	formatResult: (r) -> "(#{r[0]}, #{r[1]} score:#{r[2]})"
 
 
 questionOne = new SunspotsMatrix("1 5 5 3 1 2 0 4 1 1 3 2 2 3 2 4 3 0 2 3 3 2 1 0 2 4 3")
