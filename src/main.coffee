@@ -11,14 +11,21 @@ class SunspotsMatrix
 			@matrix.push(@values.slice(sliceIndex, sliceIndex+@matrixSize))
 
 	getHotSpotScore: (x, y) ->
+		console.log("getting score for ", x, y)
 		total = 0
-		ranges = [x-1..x+1]
+		xRanges = [x-1..x+1]
+		yRanges = [y-1..y+1]
 
-		for xx in ranges
-			for yy in ranges
+		for xx in xRanges when @inMatrixRange(xx)
+			for yy in yRanges when @inMatrixRange(yy)
 				total+=@matrix[xx][yy]
 
 		total
+
+	inMatrixRange: (point) ->
+		ok = point>=0 and point<=@matrixSize
+		console.log("ok = ", point, @matrixSize, ok)
+		ok
 
 	topScores: ->
 		totals = []
