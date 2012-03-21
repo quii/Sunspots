@@ -13,8 +13,8 @@ class SunspotsMatrix
 	getHotSpotScore: (x, y) ->
 		total = 0
 
-		for yy in @area(x) when @inMatrixRange(yy)
-			for xx in @area(y) when @inMatrixRange(xx)
+		for yy in @area(y) when @inMatrixRange(yy)
+			for xx in @area(x) when @inMatrixRange(xx)
 				total+=@matrix[xx][yy]
 
 		total
