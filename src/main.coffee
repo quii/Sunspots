@@ -31,7 +31,7 @@ class SunspotsMatrix
 			for x in fullRange
 				totals.push([x, y, @getHotSpotScore(x,y)])
 
-		totals.sort(@sortFunc).slice(0, @numberOfResults)
+		"(#{t[0]}, #{t[1]} score:#{t[2]})" for t in totals.sort(@sortFunc).slice(0, @numberOfResults)
 
 	sortFunc: (a,b) ->
 		b[2]-a[2]
